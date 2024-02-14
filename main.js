@@ -6,7 +6,7 @@ import {OrbitControls} from 'three/examples/jsm/controls/OrbitControls'
 const scene = new THREE.Scene()
 
 //camera
-const camera= new THREE.PerspectiveCamera(45,window.innerWidth/window.innerHeight,0.1,1000)
+const camera= new THREE.PerspectiveCamera(45,window.innerWidth/window.innerHeight,0.1,2000)
 
 //renderer
 const renderer = new THREE.WebGLRenderer()
@@ -14,10 +14,10 @@ renderer.setSize(window.innerWidth,window.innerHeight)
 document.body.appendChild(renderer.domElement)
 //controls
 const controls = new OrbitControls(camera,renderer.domElement)
-camera.position.set(-90,140,140)
+camera.position.set(-90,400,400)
 controls.update()
 //sun
-const sunGeometry = new THREE.SphereGeometry(30,64,64)
+const sunGeometry = new THREE.SphereGeometry(90,64,64)
 const sunMaterial = new THREE.MeshBasicMaterial({map:new THREE.TextureLoader().load('images/sun.jpg')})
 const sun = new THREE.Mesh(sunGeometry,sunMaterial)
 
@@ -44,18 +44,18 @@ function planetMaker(size,image,distance,Ring){
   return {obj, planet}
 
 }
-const mercury = planetMaker(5,'images/mercury.jpg',50)
-const venus = planetMaker(8,'images/venus.jpg',100)
-const earth = planetMaker(12,'images/earth.jpg',180)
-const mars = planetMaker(11,'images/mars.jpg',250)
-const jupiter = planetMaker(23,'images/jupiter.jpg',360)
-const saturn = planetMaker(20,'images/saturn.jpg',470,{
-  innerRadius:30,
-  outerRadius:50,
+const mercury = planetMaker(5,'images/mercury.jpg',150)
+const venus = planetMaker(8,'images/venus.jpg',220)
+const earth = planetMaker(12,'images/earth.jpg',300)
+const mars = planetMaker(11,'images/mars.jpg',370)
+const jupiter = planetMaker(50,'images/jupiter.jpg',490)
+const saturn = planetMaker(38,'images/saturn.jpg',750,{
+  innerRadius:50,
+  outerRadius:70,
   texture:'images/saturn ring.png'
 })
-const uranus = planetMaker(8,'images/uranus.jpg',580)
-const neptune = planetMaker(8,'images/neptune.jpg',690)
+const uranus = planetMaker(8,'images/uranus.jpg',870)
+const neptune = planetMaker(8,'images/neptune.jpg',1000)
 //add stars
 function addStar(){
   const Geometry = new THREE.SphereGeometry(0.5,64,64)
